@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface CategorySectionProps {
   id: string;
@@ -56,7 +57,11 @@ const CategorySection: React.FC<CategorySectionProps> = ({
             {/* Product Preview */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
               {products.map((product, index) => (
-                <div key={index} className="group">
+                <Link 
+                  key={index} 
+                  to={`/catalog/${id.toLowerCase()}`} 
+                  className="group"
+                >
                   <div className="rounded-lg overflow-hidden bg-gray-100 mb-2 aspect-square">
                     <img 
                       src={product.imageUrl} 
@@ -66,15 +71,17 @@ const CategorySection: React.FC<CategorySectionProps> = ({
                   </div>
                   <h3 className="font-medium text-fashion-dark">{product.name}</h3>
                   <p className="text-fashion-purple">{product.price}</p>
-                </div>
+                </Link>
               ))}
             </div>
             
-            <Button 
-              className="self-start bg-fashion-purple hover:bg-fashion-purple/90 text-white"
-            >
-              View All {title} Items <ArrowRight size={16} className="ml-2" />
-            </Button>
+            <Link to={`/catalog/${id.toLowerCase()}`}>
+              <Button 
+                className="self-start bg-fashion-purple hover:bg-fashion-purple/90 text-white"
+              >
+                View All {title} Items <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

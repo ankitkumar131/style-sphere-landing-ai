@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 const SignupSection: React.FC = () => {
   return (
@@ -21,12 +22,14 @@ const SignupSection: React.FC = () => {
               placeholder="Enter your email" 
               className="bg-white/20 border-white/30 text-white placeholder:text-white/60 focus-visible:ring-white"
             />
-            <Button 
-              type="submit" 
-              className="bg-white text-fashion-purple hover:bg-white/90 font-medium"
-            >
-              Subscribe
-            </Button>
+            <Link to="/signup">
+              <Button 
+                type="submit" 
+                className="bg-white text-fashion-purple hover:bg-white/90 font-medium"
+              >
+                Subscribe
+              </Button>
+            </Link>
           </form>
           
           <p className="text-white/70 mt-4 text-sm">

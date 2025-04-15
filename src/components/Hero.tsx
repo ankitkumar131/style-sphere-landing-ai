@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   return (
@@ -26,11 +27,13 @@ const Hero: React.FC = () => {
             Explore our AI-curated collections designed to enhance your unique style profile
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              className="bg-fashion-purple hover:bg-fashion-purple/90 text-white font-medium px-8 py-6"
-            >
-              Shop Now <ArrowRight size={16} className="ml-2" />
-            </Button>
+            <Link to="/catalog/women">
+              <Button 
+                className="bg-fashion-purple hover:bg-fashion-purple/90 text-white font-medium px-8 py-6"
+              >
+                Shop Now <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </Link>
             <Button 
               variant="outline" 
               className="border-white text-white hover:bg-white/10"
