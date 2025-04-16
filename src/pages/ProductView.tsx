@@ -5,7 +5,7 @@ import { useShopContext } from "@/context/ShopContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Heart, ShoppingBag, Share2, MinusCircle, PlusCircle, Truck, RotateCcw, Shield } from "lucide-react";
+import { Heart, ShoppingBag, Share2, MinusCircle, PlusCircle, Truck, RotateCcw, Shield, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
 const ProductView: React.FC = () => {
@@ -78,6 +78,28 @@ const ProductView: React.FC = () => {
       size: selectedSize,
       color: selectedColor
     }, quantity);
+  };
+
+  const handleBuyNow = () => {
+    if (sizes.length > 0 && !selectedSize) {
+      toast.error("Please select a size");
+      return;
+    }
+    
+    if (colors.length > 0 && !selectedColor) {
+      toast.error("Please select a color");
+      return;
+    }
+    
+    // Add to cart and navigate to checkout immediately
+    addToCart({
+      ...product,
+      size: selectedSize,
+      color: selectedColor
+    }, quantity);
+    
+    // Navigate to checkout
+    navigate('/checkout');
   };
   
   const handleAddToWishlist = () => {
@@ -282,6 +304,14 @@ const ProductView: React.FC = () => {
                   <Share2 size={20} />
                 </Button>
               </div>
+              
+              {/* Buy Now Button */}
+              <Button 
+                className="w-full bg-black hover:bg-black/90 py-6"
+                onClick={handleBuyNow}
+              >
+                <CreditCard size={18} className="mr-2" /> Buy Now
+              </Button>
               
               {/* Product Info */}
               <div className="border-t pt-6 space-y-4">
